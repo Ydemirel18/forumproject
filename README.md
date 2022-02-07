@@ -1,4 +1,5 @@
 İlk Kurulum:<br>
+Bilgisayarınızda composer yüklü değilse öncelikle composer yüklemelisiniz. https://getcomposer.org/<br>
 Aşağıdaki adımları projenin kök dizininde çalıştırın.<br>
 Bağımlılıkları yükleme<br>
     -composer install<br>
