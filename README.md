@@ -1,4 +1,4 @@
-İlk Kurulum:
+İlk Kurulum:<br>
 Aşağıdaki adımları projenin kök dizininde çalıştırın.
 Bağımlılıkları yükleme
     -composer install
