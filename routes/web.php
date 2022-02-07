@@ -14,11 +14,8 @@ Route::name('article')->group(function () {
     Route::get('/article/{id}', 'ArticleController@index');
 });
 
-Route::name('profile')->group(function(){
-    Route::get('/profile', 'ProfileController@index')->name('profile');
-});
-
-Route::name('comment')->group(function(){
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::name('comment')->group(function (){
     Route::get('/comment/create','CommentController@create');
 });
 
