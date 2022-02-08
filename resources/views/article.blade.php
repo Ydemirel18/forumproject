@@ -7,7 +7,7 @@
 @endsection
 @section('content')
  <!-- Page content-->
- <div class="container mt-5">
+ <div class="container">
     <div class="row">
         <div class="col-lg-8">
             <!-- Post content-->
@@ -30,23 +30,12 @@
                    </section>
             </article>
             @endforeach
-            <!-- Comments section-->
-
-            <b>YAZI İLE İLGİLİ YORUMLAR</b>
+             <!-- Comments section-->
+            @if (count($comments)>0)
             <section class="mb-5">
-                <div >
+                <div>
+                    <b>YAZI İLE İLGİLİ YORUMLAR</b>
                     <div class="card-body" style="overflow-wrap: break-word;">
-                        @auth
-                        <!-- Comment form-->
-                        <form action="{{url('/comment/create')}}" method="get" class="mb-4">
-                            <textarea class="form-control"  name="articlecomment" rows="3" placeholder="Tartışmaya katıl ve bir yorum bırak!" required></textarea>
-                            <input type="hidden"  name="articleid" value="{{$item->id}}"><br>
-                            <button type="submit" class="btn btn-success">Yorum Gönder</button>
-                        </form>
-                        @endauth
-                        <!-- Comment with nested comments-->
-                       
-                        <br>
                         @foreach ($comments as $comment)
                         <!-- Single comment-->
                         <div class="d-flex" >
@@ -55,18 +44,27 @@
                             </div>
                             <div class="col-lg-10">
                             <div class="ms-3" >
-                                
                                 <b>{{$comment->user->name}}</b><br>
                                 <p style="padding-right: 10%;">
                                     {{$comment->comment}} 
                                 </p>
                             </div>
                             </div>
-                        </div>
+                         </div>
                         @endforeach
+                        <!-- Comment with nested comments-->
                     </div>
                 </div>
             </section>
+            @endif
+            @auth
+            <!-- Comment form-->
+            <form action="{{url('/comment/create')}}" method="get" class="mb-4">
+                <textarea class="form-control"  name="articlecomment" rows="3" placeholder="Tartışmaya katıl ve bir yorum bırak!" required></textarea>
+                <input type="hidden"  name="articleid" value="{{$item->id}}"><br>
+                <button type="submit" class="btn btn-success">Yorum Gönder</button>
+            </form>
+            @endauth
         </div>
         <!-- Side widgets-->
         <div class="col-lg-4">
@@ -102,10 +100,7 @@
                     </div>
                 </div>
             </div>
-           
         </div>
     </div>
 </div>
-
-    
 @endsection
