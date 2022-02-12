@@ -16,8 +16,8 @@ class Articles extends Migration
            Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('content_title');
-            $table->string('content_description');
-            $table->string('content');
+            $table->longText('content_description');
+            $table->longText('content');
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

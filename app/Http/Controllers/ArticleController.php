@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\articles;
 use App\Models\comments;
-use App\Models\Categories;
+use App\Models\categories;
+use App\Models\article_categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,7 @@ class ArticleController extends Controller
             $contenttitle=$request->articlecontenttitle;
             $content=htmlspecialchars($request->articlecontent);
             $contentdescription=$request->articlecontentdescription;
+            $contentcategory=$request->categories;
             $userid = Auth::user()->id;
             $articlecreate=articles::firstOrCreate(
                 [
@@ -32,13 +34,28 @@ class ArticleController extends Controller
                     'user_id'=>$userid
                 ]
             );
+            foreach($contentcategory as $category)
+            {
+                $categorycreate=article_categories::firstOrCreate(
+                    [
+                        'article_id'=>$articlecreate->id,
+                        'category_id'=>$category
+                    ]);
+            }
+           
             return redirect('/profile');
         }
     }
-    public function destroy($id)
+    public function delete($id)
     {
-        $articledelete = Articles::where('id',$id)->delete();
-        return redirect('/profile');
+        $articles=articles::where('id',$id)->get();
+        if(count($articles)>0)
+        {
+            $articlecommentsdelete=comments::where('article_id',$id)->delete();
+            $articlecategorydelete=article_categories::where('article_id',$id)->delete();
+            $articledelete = articles::where('id',$id)->delete();
+        }
+        return redirect('/profile'); 
     }
     public function update($articleid,request $request)
     {

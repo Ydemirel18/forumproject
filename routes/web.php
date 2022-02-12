@@ -8,15 +8,20 @@ Route::name('mainpage')->group(function () {
 });
 
 Route::name('article')->group(function () {
-    Route::get('/article/create', 'ArticleController@create');
-    Route::delete('/article/{id}', 'ArticleController@destroy');
+    Route::post('/article/create', 'ArticleController@create');
+    Route::delete('/article/{id}', 'ArticleController@delete');
     Route::get('/article/update/{id}', 'ArticleController@update')->middleware('auth');
     Route::get('/article/{id}', 'ArticleController@index');
 });
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::name('comment')->group(function (){
     Route::get('/comment/create','CommentController@create');
 });
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::get('/category/{id}', 'CategoryController@index');
+
+
 
 Auth::routes();

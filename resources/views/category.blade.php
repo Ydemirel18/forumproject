@@ -6,16 +6,18 @@
 @section('content')
 <div class="container">
     <div class="row">
+   
         <!-- Blog entries-->
         <div class="col-lg-8">
-        @foreach ($articles as $article)
+            <p><h3>KATEGORİYE AİT YAZILAR AŞAĞIDA LİSTELENMİŞTİR</h3></p>
+        @foreach ($article_categories as $article)
             <!-- Featured blog post-->
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="small text-muted">{{$article->user->name}} - {{$article->updated_at}}</div>
-                    <h2 class="card-title"> {{$article->content_title}}</h2>
-                    <p class="card-text"> {{$article->content_description}}</p>
-                    <a href="{{url('article/'.$article->id)}}"> Devamını oku! </a>
+                    <div class="small text-muted">{{$article->name}} - {{$article->articles->updated_at}}</div>
+                    <h2 class="card-title"> {{$article->articles->content_title}}</h2>
+                    <p class="card-text"> {{$article->articles->content_description}}</p>
+                    <a href="{{url('article/'.$article->articles->id)}}"> Devamını oku! </a>
                 </div>
             </div>
         @endforeach
@@ -41,7 +43,7 @@
                             @if (count($categories)>0)
                             <ul class="list-unstyled mb-0">
                                 @foreach($categories as $category)
-                                <a href="category/{{$category->id}}">
+                                <a href="{{$category->id}}">
                                     <li>
                                        {{$category->category}}<br>
                                     </li>
@@ -56,5 +58,4 @@
         </div>
     </div>
 </div>
-{!! $articles->render() !!}
 @endsection
