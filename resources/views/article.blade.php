@@ -87,7 +87,11 @@
                             @if (count($categories)>0)
                             <ul class="list-unstyled mb-0">
                                 @foreach($categories as $category)
-                                <li><a href="category/{{$category->id}}">{{$category->category}}</a></li>
+                                <li>
+                                    <a href="/category/{{$category->id}}">
+                                    {{$category->category}}
+                                    </a>
+                                </li>
                                 @endforeach
                              </ul>
                             @endif

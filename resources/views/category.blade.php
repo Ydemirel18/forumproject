@@ -9,7 +9,11 @@
    
         <!-- Blog entries-->
         <div class="col-lg-8">
+            @if(count($article_categories) > 0)
             <p><h3>KATEGORİYE AİT YAZILAR AŞAĞIDA LİSTELENMİŞTİR</h3></p>
+            @else
+            <p><h3>KATEGORİYE AİT YAZI BULUNAMAMIŞTIR</h3></p>
+            @endif
         @foreach ($article_categories as $article)
             <!-- Featured blog post-->
             <div class="card mb-4">
