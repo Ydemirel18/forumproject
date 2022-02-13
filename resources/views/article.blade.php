@@ -20,9 +20,6 @@
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">
                     {{ $item->updated_at }} tarihinde {{ $item->user->name }} tarafından paylaşıldı</div>
-                    <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                 </header>
                 <!-- Post content-->
                 <section class="mb-5">
