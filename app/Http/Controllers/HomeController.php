@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {       
             $categories = categories::get();
-            $articles = articles::with('user')->orderBy('id', 'desc')->paginate(10);
+            $articles = articles::with('users')->orderBy('id', 'desc')->paginate(10);
             return view('home', ['articles'=>$articles , 'categories'=>$categories]);
     }
 }

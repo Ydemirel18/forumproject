@@ -22,6 +22,7 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/category/{id}', 'CategoryController@index');
 
+Route::get('/writerprofile/{id}', 'WriterProfileController@index');
 
 
 Auth::routes();

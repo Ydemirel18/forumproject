@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class users extends Model
 {
-    public function article()
+    public function articles()
     {
         return $this->hasMany('App\Models\articles', 'user_id','id');
     }
     
-    public function comment()
+    public function comments()
     {
         return $this->hasMany('App\Models\comments', 'user_id','id');
     }

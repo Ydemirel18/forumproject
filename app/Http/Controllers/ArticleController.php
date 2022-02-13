@@ -12,8 +12,8 @@ class ArticleController extends Controller
 {
     public function index($articleid)
     {
-        $articles = articles::with('user')->where('id', "$articleid")->limit(1)->get();
-        $comments=comments::with('user')->where('article_id',"$articleid")->get();
+        $articles = articles::with('users')->where('id', "$articleid")->limit(1)->get();
+        $comments=comments::with('users')->where('article_id',"$articleid")->get();
         $categories=categories::get();
         return view('article', ['articles'=>$articles,'categories'=>$categories,'comments'=>$comments]);
     }

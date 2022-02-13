@@ -19,7 +19,7 @@
                     <h1 class="fw-bolder mb-1">{{ $item->content_title }}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">
-                    {{ $item->updated_at }} tarihinde {{ $item->user->name }} tarafından paylaşıldı</div>
+                    {{ $item->updated_at }} tarihinde {{ $item->users->name }} tarafından paylaşıldı</div>
                 </header>
                 <!-- Post content-->
                 <section class="mb-5">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-lg-10">
                             <div class="ms-3" >
-                                <b>{{$comment->user->name}}</b><br>
+                                <b>{{$comment->users->name}}</b><br>
                                 <p style="padding-right: 10%;">
                                     {{$comment->comment}} 
                                 </p>

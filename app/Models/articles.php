@@ -7,12 +7,12 @@ class articles extends Model
 {
     protected $fillable = ['content_title','content_description','content','user_id']; 
     
-    public function comment()
+    public function comments()
     {
          return $this->hasMany('App\Models\comments', 'article_id','id');
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\Models\users','user_id','id');
     }
