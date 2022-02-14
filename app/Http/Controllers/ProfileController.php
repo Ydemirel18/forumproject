@@ -14,7 +14,7 @@ class ProfileController extends Controller
     }
 
     public function index(){
-            $id = Auth::users()->id;
+            $id = Auth::user()->id;
             $categories=categories::get();
             $articles = articles::where('user_id', "$id")->orderBy('id', 'desc')->limit(10)->get();
             return view('profile', ['articles'=>$articles,'categories'=>$categories]);

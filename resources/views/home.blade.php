@@ -4,10 +4,12 @@
 @section('css')
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
+        <div class="col-lg-1">
+        </div>
         <!-- Blog entries-->
-        <div class="col-lg-8">
+        <div class="col-lg-7">
         @foreach ($articles as $article)
             <!-- Featured blog post-->
             <div class="card mb-4">
@@ -21,7 +23,7 @@
         @endforeach
         </div>
         <!-- Side widgets-->
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <!-- Search widget-->
             <div class="card mb-4">
                 <div class="card-header">Ara</div>
@@ -54,6 +56,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-1"></div>
     </div>
 </div>
 {!! $articles->render() !!}
