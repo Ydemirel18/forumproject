@@ -18,7 +18,7 @@
                 <!-- Post header-->
                 <header class="mb-4">
                     <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">{{ $item->content_title }}</h1>
+                    <h4 class="fw-bolder mb-1" style="font-family: Arial, Helvetica, sans-serif;">{{ $item->content_title }}</h4>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">
                     {{ $item->updated_at }} tarihinde {{ $item->users->name }} tarafından paylaşıldı</div>
@@ -67,37 +67,7 @@
         </div>
         <!-- Side widgets-->
         <div class="col-lg-3">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Ara</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Arama Terimi Giriniz..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Ara!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Kategoriler</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            @if (count($categories)>0)
-                            <ul class="list-unstyled mb-0">
-                                @foreach($categories as $category)
-                                <li>
-                                    <a href="/category/{{$category->id}}">
-                                    {{$category->category}}
-                                    </a>
-                                </li>
-                                @endforeach
-                             </ul>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('components.sidewidgetcomponent')
         </div>
         <div class="col-lg-1"></div>
     </div>
