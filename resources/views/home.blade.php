@@ -21,10 +21,11 @@
                     <a href="{{url('article/'.$article->id)}}"> Devamını oku! </a>
                     <hr>
         @endforeach
+            {!! $articles->render() !!}
         </div>
 
-
     </div>
+    <br><br><br>
 </div>
-{!! $articles->render() !!}
+
 @endsection
