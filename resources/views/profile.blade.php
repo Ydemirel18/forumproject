@@ -6,7 +6,7 @@
 <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <form action="{{url('/article/create')}}" method="post">

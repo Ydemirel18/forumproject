@@ -9,9 +9,11 @@
  <!-- Page content-->
  <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-1">
+        <!-- Side widgets-->
+        <div class="col-lg-2">
+            @include('components.sidewidgetcomponent')
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-10">
             <!-- Post content-->
             @foreach ($articles as $item)
             <article>
@@ -45,7 +47,7 @@
                             <div class="ms-3" >
                                 <b>{{$comment->users->name}}</b><br>
                                 <p style="padding-right: 10%;">
-                                    {{$comment->comment}} 
+                                    {{$comment->comment}}
                                 </p>
                             </div>
                             </div>
@@ -65,11 +67,8 @@
             </form>
             @endauth
         </div>
-        <!-- Side widgets-->
-        <div class="col-lg-3">
-            @include('components.sidewidgetcomponent')
-        </div>
-        <div class="col-lg-1"></div>
+
+
     </div>
 </div>
 @endsection

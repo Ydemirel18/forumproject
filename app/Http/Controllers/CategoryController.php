@@ -14,8 +14,9 @@ class CategoryController extends Controller
     {
         $categories = categories::get();
         $article_categories=article_categories::with('articles')->where("category_id", "$category_id")->get();
+        $category_name=categories::select("category")->where("id","$category_id")->get();
         $this->getUser($article_categories); 
-        return view('category', ['article_categories'=>$article_categories,'categories'=>$categories]);
+        return view('category', ['article_categories'=>$article_categories ,'category_name'=>$category_name[0]->category, 'categories'=>$categories]);
     }
     public function getUser($article_categories){
         foreach($article_categories as $article)
