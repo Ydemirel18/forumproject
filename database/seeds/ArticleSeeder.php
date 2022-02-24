@@ -11,11 +11,15 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('articles')->insert([
-            'content_title' => Str::random(10),
-            'content_description'=>Str::random(100),
-            'content' => Str::random(200),
-            'user_id' => 1,
-        ]);
+        $faker = Faker\factory::create();
+        for ($i=0;$i<100;$i++)
+        {
+            DB::table('articles')->insert([
+                'content_title' => $faker->title,
+                'content_description'=>$faker->text(200),
+                'content' => $faker->text(1000),
+                'user_id' => 1,
+            ]);
+        }
     }
 }
