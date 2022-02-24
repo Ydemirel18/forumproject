@@ -6,9 +6,12 @@
 <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-10">
             <form action="{{url('/article/create')}}" method="post">
                 @csrf
                 <div class="form-group">
@@ -35,38 +38,54 @@
                 <button type="submit" class="btn btn-primary">Kayıt Et</button>
             </form>
             <br>
+
             @if(count($articles)>0)
-            <div class="row">
-                <div class="col-md-2">Yazı Başlığı</div>
-                <div class="col-md-2">Yazı Özeti</div>
-                <div class="col-md-3">Yazı İçeriği</div>
-                <div class="col-md-2">Güncellenme Tarihi</div>
-                <div class="col-md-3">#</div>
-            </div>
-           
-            @foreach ($articles as $item)
-            <div class="row">
-                <div class="col-md-2 content">{{$item->content_title}}</div>
-                <div class="col-md-2 content">{{$item->content_description}}</div>
-                <div class="col-md-3 content">{!! nl2br($item->content) !!}</div>
-                <div class="col-md-3 content">{{$item->updated_at}}</div>
-                <div class="col-md-2 content" style="float: left">
-                    <a href="{{url('article/update/'.$item->id)}}">
-                        <button type="button" class="btn btn-primary">Güncelle</button>
-                    </a>
-                    <form action="/article/{{ $item->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="item" value="{{$item->id}}">
-                        <button type="submit" class="btn btn-danger">Sil</button>
-                    </form>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Tüm yazılar</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Özet</th>
+                                <th>İçerik</th>
+                                <th>Tarih</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+                            @foreach ($articles as $item)
+                            <tbody>
+                            <tr>
+                                <td>{{$item->content_title}}</td>
+                                <td>{{$item->content_description}}</td>
+                                <td>{!! nl2br($item->content) !!}</td>
+                                <td>{{$item->updated_at}}</td>
+                                <td> <a href="{{url('article/update/'.$item->id)}}">
+                                        <button type="button" class="btn btn-primary">Güncelle</button>
+                                    </a>
+                                    <form action="/article/{{ $item->id }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="item" value="{{$item->id}}">
+                                        <button type="submit" class="btn btn-danger">Sil</button>
+                                        @method('DELETE')
+                                    </form></td>
+                            </tr>
+                            </tbody>
+                            @endforeach
+                            {!! $articles->render() !!}
+                        </table>
+                    </div>
                 </div>
             </div>
-            @endforeach
-            @endif   
-            
-            </pre>
         </div>
+                @endif
+
     </div>
+    <br>
+    <br>
 </div>
+
 @endsection
