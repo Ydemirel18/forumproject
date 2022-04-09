@@ -24,5 +24,6 @@ Route::get('/category/{id}', 'CategoryController@index');
 
 Route::get('/writerprofile/{id}', 'WriterProfileController@index');
 
+Route::get('/searchresult', 'searchController@search');
 
 Auth::routes();

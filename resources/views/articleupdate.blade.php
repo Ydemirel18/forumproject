@@ -12,20 +12,59 @@
             @foreach ($articles as $item)
             <form action="{{url('/article/update/'.$item->id)}}" method="put">
                 @csrf
-                <div class="form-group">
-                    <label>Yazı Başlığı</label>
-                    <input value="{{$item->content_title}}" class="form-control" name="articlecontenttitle">
+                <div class="card shadow mb-4">
+                        <h6 style="padding-left: 20px;padding-top:20px;"> Yazı Güncelleme</h6>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Yazı Başlığı</label>
+                                <input value="{{$item->content_title}}" class="form-control" name="articlecontenttitle">
+                            </div>
+                            <div class="form-group">
+                                <label>Yazı Özeti</label>
+                                <input value="{{$item->content_description}}" class="form-control" name="articlecontentdescription">
+                            </div>
+                               
+                                <div class="form-group">
+                                    <label>Yazı İçeriği</label>
+                                   <textarea id="summernote" name="articlecontent" rows="18">
+                                       {!! $item->content !!}
+                                   </textarea>
+                                </div>
+                                <script type="application/javascript">
+                                  $('#summernote').summernote({
+                                    placeholder: 'Hello stand alone ui',
+                                    tabsize: 2,
+                                    height: 120,
+                                    toolbar: [
+                                      ['style', ['style']],
+                                      ['font', ['bold', 'underline', 'clear']],
+                                      ['color', ['color']],
+                                      ['para', ['ul', 'ol', 'paragraph']],
+                                      ['table', ['table']],
+                                      ['insert', ['link', 'picture']],
+                                      ['view', [ 'codeview']]
+                                    ]
+                                  });
+                                </script>
+                                  <div class="form-group">
+            
+                                    Kategori
+                                    <select name="categories[]" class="form-control" multiple="multiple">
+                                        @if(count($categories)>0)
+                                            @foreach($categories as $category)
+                                                @if(array_search($category->id,$selectedCategoriesId) !== false)
+                                                <option value="{{$category->id}}" selected>{{$category->category}}</option>
+                                                @else
+                                                <option value="{{$category->id}}">{{$category->category}}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </div>
                 </div>
-                <div class="form-group">
-                    <label>Yazı Özeti</label>
-                    <input value="{{$item->content_description}}" class="form-control" name="articlecontentdescription">
-                </div>
-                <div class="form-group">
-                    <label>Yazı İçeriği</label>
-                    <textarea  class="form-control" name="articlecontent" rows="5">{{$item->content}}</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Güncelle</button>
-            </form>
+                </form>
             @endforeach
         </div>
     </div>

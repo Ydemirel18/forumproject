@@ -1,18 +1,20 @@
-        <!-- Categories widget-->
-<div class="row">
-     <div class="col-sm-6">
-         <div class="sidebar">
-        @if (count($categories)>0)
-            <ul class="list-unstyled mb-0">
-              @foreach($categories as $category)
-                  <a href="/category/{{$category->id}}">
-                    <li>
-                        {{$category->category}}<br>
-                     </li>
-                 </a>
-               @endforeach
-           </ul>
-        @endif
-         </div>
-    </div>
-</div>
+@if (isset($categories) && count($categories)>0)
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            Kategoriler
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           
+                 @foreach($categories as $category)
+                <a style="font-family: 'Smooch Sans', sans-serif;font-size:14px;" class="dropdown-item" href="/category/{{$category->id}}">
+                 {{$category->category}}<br>
+                </a>
+                @endforeach
+          
+        </div>
+    </li>
+</ul>
+@endif
+
+

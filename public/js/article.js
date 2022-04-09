@@ -1,8 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
 $(document).on('click', 'a.jquery-postback', function(e) {
     e.preventDefault();
     var $this = $(this);

@@ -1,2 +1,2 @@
    <!--@include('components.searchcomponent') -->
-   @include('components.categorycomponent')
+   <!-- @include('components.categorycomponent') -->

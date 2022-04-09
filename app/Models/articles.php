@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class articles extends Model
 {
-    protected $fillable = ['content_title','content_description','content','user_id']; 
+    protected $fillable = ['content_title','content_image','content_description','content','user_id']; 
     
     public function comments()
     {
